@@ -1,1 +1,6 @@
 <h1>Inflatable index</h1>
+<ul>
+  <% @inflatables.each do |inflatable| %>
+    <li><%= inflatable.title %></li>
+  <% end %>
+</ul>
