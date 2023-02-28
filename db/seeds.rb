@@ -5,3 +5,27 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+User.destroy_all
+puts 'Creating 10 fake user...'
+10.times do
+  user = User.new(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    password: Faker::Internet.password,
+    email: Faker::Internet.email
+  )
+  user.save!
+end
+
+Inflatable.destroy_all
+puts 'Creating 20 fake inflatables...'
+20.times do
+  inflatable = Inflatable.new(
+    title: Faker::Commerce.product_name,
+    description: Faker::Lorem.sentence,
+    category: Faker::Commerce.department,
+    price: Faker::Commerce.price,
+    user: User.all.sample
+  )
+  inflatable.save!
+end
