@@ -23,6 +23,7 @@ class InflatablesController < ApplicationController
   def update
     @inflatable.update(inflatable_params)
     redirect_to inflatables_path
+
   end
 
   def destroy
