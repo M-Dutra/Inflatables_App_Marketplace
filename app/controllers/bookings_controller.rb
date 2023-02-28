@@ -8,10 +8,17 @@ class BookingsController < ApplicationController
   def create
     @booking = Booking.new(booking_params)
     @booking.inflatable = @booking
-    @booking.save
-    redirect to inflatable_path(@inflatable)
+    if @booking.save
+      redirect to inflatable_path(@inflatable)
+    else
+      render :new, status: :unprocessable_entity
+    end
     total_days = (@booking.start_date - @booking.end_date).to_i
     total_price = @inflatable.price * total_days
+  end
+
+  def show
+    @booking = Booking.find(params[:id])
   end
 
   private
