@@ -39,7 +39,7 @@ class InflatablesController < ApplicationController
   private
 
   def inflatable_params
-    params.require(:inflatable).permit(:title, :description, :category, :price)
+    params.require(:inflatable).permit(:title, :description, :category, :price, :photo)
   end
 
   def set_inflatable

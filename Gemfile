@@ -76,4 +76,8 @@ group :test do
   gem "webdrivers"
 end
 
+  # faker seeds
 gem 'faker'
+
+  # cloudinary (images)
+gem "cloudinary"
