@@ -1,3 +1,4 @@
+require "open-uri"
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 #
@@ -17,6 +18,9 @@ puts 'Creating 10 fake user...'
   user.save!
 end
 
+Inflatable.all.each do |inflatable|
+  inflatable.photo.purge
+end
 Inflatable.destroy_all
 puts 'Creating 20 fake inflatables...'
 20.times do
@@ -27,5 +31,8 @@ puts 'Creating 20 fake inflatables...'
     price: Faker::Commerce.price,
     user: User.all.sample
   )
+  file = URI.open("https://source.unsplash.com/random/?balloon")
+  inflatable.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
+  p inflatable
   inflatable.save!
 end

@@ -79,5 +79,5 @@ end
   # faker seeds
 gem 'faker'
 
-  # image security
-gem "dotenv-rails", groups: [:development, :test]
+  # cloudinary (images)
+gem "cloudinary"
