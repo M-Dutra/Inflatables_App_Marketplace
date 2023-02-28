@@ -23,7 +23,7 @@ puts 'Creating 20 fake inflatables...'
   inflatable = Inflatable.new(
     title: Faker::Commerce.product_name,
     description: Faker::Lorem.sentence,
-    category: Faker::Commerce.department,
+    category: Faker::Commerce.department, # ["toy", "suits", "swimming pools", "balloons"].sample
     price: Faker::Commerce.price,
     user: User.all.sample
   )
