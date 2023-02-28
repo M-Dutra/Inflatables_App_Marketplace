@@ -10,3 +10,9 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+
+
+#white-nav-text > * {
+  color: white !important;
+}
