@@ -10,6 +10,8 @@ class BookingsController < ApplicationController
     @booking.inflatable = @booking
     @booking.save
     redirect to inflatable_path(@inflatable)
+    total_days = (@booking.start_date - @booking.end_date).to_i
+    total_price = @inflatable.price * total_days
   end
 
   private
