@@ -17,9 +17,15 @@ class BookingsController < ApplicationController
     total_price = @inflatable.price * total_days
   end
 
-  def show
-    @booking = Booking.find(params[:id])
-  end
+  # def show
+  #   @booking = Booking.find(params[:id])
+  # end
+
+  # def destroy
+  #   @booking = Booking.find(params[:id])
+  #   @booking.destroy
+  #   redirect_to inflatable_path(@booking.inflatable), status: :see_other
+  # end
 
   private
 
