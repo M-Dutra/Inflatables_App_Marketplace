@@ -13,16 +13,22 @@ class InflatablesController < ApplicationController
 
   def create
     @inflatable = Inflatable.new(inflatable_params)
-    @inflatable.save
-    redirect_to inflatables_path(@inflatable)
+    if @inflatable.save
+      redirect_to inflatables_path(@inflatable)
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def edit
   end
 
   def update
-    @inflatable.update(inflatable_params)
-    redirect_to inflatables_path
+    if @inflatable.update(inflatable_params)
+      redirect_to inflatables_path
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def destroy
