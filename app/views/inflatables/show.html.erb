@@ -1,0 +1,54 @@
+<!-- Page Content -->
+<div class="container">
+  <h1 class="my-4"><%= @inflatable.title.upcase %></h1>
+    <div class="row">
+      <div class="col-md-8">
+        <img class="img-fluid" width="700" height="900" src="https://images.unsplash.com/photo-1603538966022-afcc0803652e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80" alt="">
+      </div>
+
+      <div class="col-md-4">
+        <h3 class="my-3"><%= @inflatable.title.capitalize %></h3>
+        <p><%= @inflatable.description %></p>
+        <h3 class="my-3">Project Details</h3>
+        <ul>
+          <li><%= @inflatable.price %>€</li>
+          <li><%= @inflatable.category %></li>
+          <li><%= @inflatable.price %>€</li>
+          <li><%= @inflatable.price %>€</li>
+        </ul>
+      </div>
+    </div>
+</div>
+<!-- further recommendations-->
+<div class="container">
+  <h3 class="my-4">You might be interested in:</h3>
+    <div class="row">
+
+      <div class="col-md-3 col-sm-6 d-flex img-interest-container">
+        <div>
+          <a href="#" class="d-flex">
+            <img class="img-interest" src="https://3.imimg.com/data3/CD/LM/MY-19285799/inflatable-jumper-500x500.jpg" alt="">
+          </a>
+        </div>
+      </div>
+
+      <div class="col-md-3 col-sm-6 d-flex img-interest-container">
+        <a href="#" class="d-flex">
+          <img class="img-interest" src="https://images.unsplash.com/photo-1612404806601-891ab0849ed2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80" alt="">
+        </a>
+      </div>
+
+      <div class="col-md-3 col-sm-6 d-flex img-interest-container">
+        <a href="#" class="d-flex">
+          <img class="img-interest" src="https://s3-ap-southeast-2.amazonaws.com/container-door-touch/marketing_images/images/29996/large/Giant_6_Person_Inflatable_Parrot_-_Web.jpg?1541374078" alt="">
+        </a>
+      </div>
+
+      <div class="col-md-3 col-sm-6 d-flex img-interest-container">
+        <a href="#" class="d-flex">
+          <img class="img-interest" src="https://bangkokpartyrentals.com/wp-content/uploads/2021/06/partyrentalmiami_drycombo2-scaled.jpg" alt="">
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
