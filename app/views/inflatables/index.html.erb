@@ -7,7 +7,6 @@
             <div class="card h-100 card-style" style="width: 18rem;">
               <%# <div><i class="fa-regular fa-heart"></i></div> %>
               <%= link_to inflatable_path(inflatable) do %>
-              <img src="https://source.unsplash.com/random/400×300/?ballon" class="card-img-top inflatable" alt="...">
               <div class="card-body">
               <%= cl_image_tag(inflatable.photo.key, width: 250, height: 300, crop: :fill) if inflatable.photo.key %>
                 <h6 class="card-subtitle "><%= inflatable.category %></h6>

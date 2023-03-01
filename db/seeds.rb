@@ -33,6 +33,6 @@ puts 'Creating 20 fake inflatables...'
   )
   file = URI.open("https://source.unsplash.com/random/?balloon")
   inflatable.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
-  p inflatable
+  p inflatable.title
   inflatable.save!
 end
