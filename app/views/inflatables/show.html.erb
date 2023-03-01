@@ -13,19 +13,17 @@
 <div class="container">
   <h1 class="my-4"><%= @inflatable.title.upcase %></h1>
     <div class="row">
-      <div class="col-md-8">
-        <%= cl_image_tag(@inflatable.photo.key, width: 700, height: 900, crop: :fill, class:"img-fluid") if @inflatable.photo.key %>
+      <div class="col-md-6">
+        <%= cl_image_tag(@inflatable.photo.key, width: 500, crop: :fill, class: "card-img-top") if @inflatable.photo.key %>
       </div>
 
-      <div class="col-md-4">
+      <div class="col-md-6">
         <h3 class="my-3"><%= @inflatable.title.capitalize %></h3>
         <p><%= @inflatable.description %></p>
         <h3 class="my-3">Project Details</h3>
         <ul>
-          <li><%= @inflatable.title %></li>
-          <li><%= @inflatable.category %></li>
-          <li><%= @inflatable.description %></li>
-          <li><%= @inflatable.price %>€</li>
+        <li>Category: <%= @inflatable.category %></li>
+        <li>Price: <%= @inflatable.price %>€</li>
         </ul>
       </div>
     </div>
@@ -33,17 +31,27 @@
 <!-- further recommendations-->
 <%# iterate over show action / @inflatables %>
 <div class="container">
-  <h3 class="my-4">You might be interested in:</h3>
-    <% @inflatables.each do |inflatable| %>
-      <div class="card">
-        <%= link_to inflatable_path do %>
-          <div class="card text-center text-white" style="background-color:#ffa82e00;">
-            <div class="card photo" class="card-img-top">
-              <%= cl_image_tag(@inflatable.photo.key, width: 700, height: 900, crop: :fill, class:"img-fluid") if @inflatable.photo.key %>
-              <%# <img class="img-interest" src="https://3.imimg.com/data3/CD/LM/MY-19285799/inflatable-jumper-500x500.jpg" alt=""> %>
+  <h1>You might also be interested in: </h1>
+  <div class="row row-cols-12 row-cols-md-4 g-4">
+      <% @inflatables.each do |inflatable| %>
+        <%# <div class="col"> %>
+          <div class="card-group">
+            <div class="card h-100 card-style" style="width: 18rem;">
+              <%# <div><i class="fa-regular fa-heart"></i></div> %>
+              <%= link_to inflatable_path(inflatable) do %>
+              <%# <img src="https://source.unsplash.com/random/400×300/?ballon" class="card-img-top inflatable" alt="..."> %>
+              <%= cl_image_tag(inflatable.photo.key, class: "card-img-top inflatable") if inflatable.photo.key %>
+              <div class="card-body">
+                <h6 class="card-subtitle "><%= inflatable.category %></h6>
+                <p class="card-title"><%= inflatable.title %></p>
+                <div class="price-label text-center align-middle">
+                  <h3 class="card-price">€ <%= inflatable.price %></h3>
+                </div>
+              </div>
+            <% end %>
             </div>
           </div>
-        <% end %>
-      </div>
-  <% end %>
+        <%# </div> %>
+      <% end %>
+  </div>
 </div>
