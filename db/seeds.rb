@@ -9,11 +9,12 @@ require "open-uri"
 User.destroy_all
 puts 'Creating 10 fake user...'
 10.times do
+  name = Faker::Name.first_name
   user = User.new(
-    first_name: Faker::Name.first_name,
+    first_name: name,
     last_name: Faker::Name.last_name,
-    password: Faker::Internet.password,
-    email: Faker::Internet.email
+    password: "123456",
+    email: "#{name}@example.com"
   )
   user.save!
 end
