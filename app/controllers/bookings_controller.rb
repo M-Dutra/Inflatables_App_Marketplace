@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  before_action :set_inflatable, only: %i[new create]
+  before_action :set_inflatable, only: %i[new]
 
   def new
     @booking = Booking.new
@@ -7,7 +7,7 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
-    @booking.inflatable = @booking
+    @booking.user = current_user
     if @booking.save
       redirect to inflatable_path(@inflatable)
     else
