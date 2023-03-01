@@ -1,0 +1,34 @@
+<h1>My Dashboard</h1>
+
+  <h1>My Bookings</h1>
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+      <% @bookings.each do |booking| %>
+      <div class="col">
+        <div class="card card-style" style="width: 18rem;">
+          <img src="https://source.unsplash.com/random/400×300/?ballon" class="card-img-top booking" alt="...">
+          <div class="card-body">
+            <p class="card-text"><%= booking.start_date %></p>
+            <p class="card-text"><%= booking.end_date %></p>
+            <h3 class="card-title"><%= booking.total_price %></h3>
+          </div>
+        </div>
+      </div>
+      <% end %>
+  </div>
+
+  <h1>My inflatables</h1>
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+      <% @inflatables.each do |inflatable| %>
+      <div class="col">
+        <div class="card card-style" style="width: 18rem;">
+          <img src="https://source.unsplash.com/random/400×300/?ballon" class="card-img-top inflatable" alt="...">
+          <div class="card-body">
+            <h6 class="card-subtitle "><%= inflatable.category %></h6>
+            <h2 class="card-title"><%= inflatable.title %></h2>
+            <p class="card-text"><%= inflatable.description %></p>
+            <h3 class="card-title"><%= inflatable.price %></h3>
+          </div>
+        </div>
+      </div>
+      <% end %>
+  </div>
