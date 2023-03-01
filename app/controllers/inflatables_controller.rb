@@ -5,6 +5,7 @@ class InflatablesController < ApplicationController
   end
 
   def show
+    @booking = Booking.new
     # suggestions variable
     # where you get category of inflatable
     # limit 4

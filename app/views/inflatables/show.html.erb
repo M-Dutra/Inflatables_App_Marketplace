@@ -1,3 +1,14 @@
+<!-- Dates for the reservation -->
+<div >
+<%= simple_form_for [@inflatable, @booking], data: { controller: 'flatpickr' }  do |f| %>
+  <%= f.input :start_date, as: :string, input_html: { data: { flatpickr_target: "startTime" } } %>
+  <%= f.input :end_date, as: :string, input_html: { data: { flatpickr_target: "endTime" }, id: 'end_time' } %>
+  <%= f.submit 'Schedule your appointment' %>
+<% end %>
+</div>
+
+
+
 <!-- Page Content -->
 <div class="container">
   <h1 class="my-4"><%= @inflatable.title.upcase %></h1>
