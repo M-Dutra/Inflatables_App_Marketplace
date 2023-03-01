@@ -1,18 +1,24 @@
 <div class="container">
   <h1>All inflatables</h1>
-  <div class="row row-cols-1 row-cols-md-3 g-4">
+  <div class="row row-cols-12 row-cols-md-4 g-4">
       <% @inflatables.each do |inflatable| %>
-      <div class="col">
-        <div class="card card-style" style="width: 18rem;">
-          <img src="https://source.unsplash.com/random/400×300/?ballon" class="card-img-top inflatable" alt="...">
-          <div class="card-body">
-            <h6 class="card-subtitle "><%= inflatable.category %></h6>
-            <h2 class="card-title"><%= inflatable.title %></h2>
-            <p class="card-text"><%= inflatable.description %></p>
-            <h3 class="card-title"><%= inflatable.price %></h3>
+        <%# <div class="col"> %>
+          <div class="card-group">
+            <div class="card h-100 card-style" style="width: 18rem;">
+              <%# <div><i class="fa-regular fa-heart"></i></div> %>
+              <%= link_to inflatable_path(inflatable) do %>
+              <img src="https://source.unsplash.com/random/400×300/?ballon" class="card-img-top inflatable" alt="...">
+              <div class="card-body">
+                <h6 class="card-subtitle "><%= inflatable.category %></h6>
+                <p class="card-title"><%= inflatable.title %></p>
+                <div class="price-label text-center align-middle">
+                  <h3 class="card-price">€ <%= inflatable.price %></h3>
+                </div>
+              </div>
+            <% end %>
+            </div>
           </div>
-        </div>
-      </div>
+        <%# </div> %>
       <% end %>
   </div>
 </div>
