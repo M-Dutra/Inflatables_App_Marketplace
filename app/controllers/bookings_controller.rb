@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  before_action :set_inflatable, only: %i[new]
+  before_action :set_inflatable, only: %i[new create]
 
   def new
     @booking = Booking.new
