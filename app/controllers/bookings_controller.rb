@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  before_action :set_inflatable, only: %i[new create]
+  before_action :set_inflatable, only: %i[new]
 
   def new
     @booking = Booking.new
@@ -11,12 +11,12 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     total_days = (@booking.end_date - @booking.start_date).to_i
     @booking.total_price = @inflatable.price * total_days
+    @booking.user = current_user
     if @booking.save
       redirect_to dashboard_path
     else
       render :new, status: :unprocessable_entity
     end
-
   end
 
   # def show
