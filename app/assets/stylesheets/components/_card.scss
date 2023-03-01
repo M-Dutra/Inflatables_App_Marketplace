@@ -4,6 +4,56 @@
 }
 
 .card-style {
-  border-style: none
+  border-style: none;
+  a {
+    text-decoration: none;
+  }
+
+  &:hover {
+    display: none;
+  }
 
 }
+
+.card-title {
+  font-size: 16px;
+  color: #121212;
+  text-decoration: none;
+
+}
+
+.card-subtitle {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding-bottom: 8px;
+  padding-top: 8px;
+  color: #cbcbcb;
+  text-decoration: none;
+}
+
+.card-price {
+  font-size: 16px;
+  color: #a80332;
+  text-decoration: none;
+
+}
+
+.card-body {
+  position: relative;
+}
+
+.price-label {
+  min-width: 56px;
+  height: 28px;
+  background-color: white;
+  position: absolute;
+  top: -28px;
+  left: 0px;
+  padding: 6px;
+}
+
+// .i {
+//   background-color: none;
+
+// }
