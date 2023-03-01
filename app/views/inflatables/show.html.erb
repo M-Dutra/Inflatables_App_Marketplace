@@ -3,7 +3,7 @@
   <h1 class="my-4"><%= @inflatable.title.upcase %></h1>
     <div class="row">
       <div class="col-md-8">
-        <img class="img-fluid" width="700" height="900" src="https://images.unsplash.com/photo-1603538966022-afcc0803652e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80" alt="">
+        <%= cl_image_tag(@inflatable.photo.key, width: 700, height: 900, crop: :fill, class:"img-fluid") if @inflatable.photo.key %>
       </div>
 
       <div class="col-md-4">
@@ -11,9 +11,9 @@
         <p><%= @inflatable.description %></p>
         <h3 class="my-3">Project Details</h3>
         <ul>
-          <li><%= @inflatable.price %>€</li>
+          <li><%= @inflatable.title %></li>
           <li><%= @inflatable.category %></li>
-          <li><%= @inflatable.price %>€</li>
+          <li><%= @inflatable.description %></li>
           <li><%= @inflatable.price %>€</li>
         </ul>
       </div>
