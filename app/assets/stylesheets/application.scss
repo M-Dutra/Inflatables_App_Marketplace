@@ -11,6 +11,9 @@
 @import "components/index";
 @import "pages/index";
 
+// Booking Dates
+@import "flatpickr/dist/flatpickr.css";
+@import "flatpickr/dist/themes/airbnb";
 
 
 #white-nav-text > * {

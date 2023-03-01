@@ -5,6 +5,13 @@ class InflatablesController < ApplicationController
   end
 
   def show
+    @booking = Booking.new
+    # suggestions variable
+    # where you get category of inflatable
+    # limit 4
+    # active records query
+    # exclude from search the one already shown
+    @inflatables = Inflatable.where(category: @inflatable.category).limit(4)
   end
 
   def new
