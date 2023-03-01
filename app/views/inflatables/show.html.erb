@@ -35,11 +35,12 @@
 <div class="container">
   <h3 class="my-4">You might be interested in:</h3>
     <% @inflatables.each do |inflatable| %>
-      <div class="">
-        <%= link_to inflatables_path do %>
+      <div class="card">
+        <%= link_to inflatable_path do %>
           <div class="card text-center text-white" style="background-color:#ffa82e00;">
             <div class="card photo" class="card-img-top">
-              <img class="img-interest" src="https://3.imimg.com/data3/CD/LM/MY-19285799/inflatable-jumper-500x500.jpg" alt="">
+              <%= cl_image_tag(@inflatable.photo.key, width: 700, height: 900, crop: :fill, class:"img-fluid") if @inflatable.photo.key %>
+              <%# <img class="img-interest" src="https://3.imimg.com/data3/CD/LM/MY-19285799/inflatable-jumper-500x500.jpg" alt=""> %>
             </div>
           </div>
         <% end %>
