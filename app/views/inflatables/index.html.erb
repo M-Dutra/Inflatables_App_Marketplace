@@ -8,9 +8,8 @@
               <%# <div><i class="fa-regular fa-heart"></i></div> %>
               <%= link_to inflatable_path(inflatable) do %>
               <%# <img src="https://source.unsplash.com/random/400×300/?ballon" class="card-img-top inflatable" alt="..."> %>
-              <%= cl_image_tag(inflatable.photo.key, width: 400, height: 300, crop: :fill) if inflatable.photo.key %>
+              <%= cl_image_tag(inflatable.photo.key, class: "card-img-top inflatable") if inflatable.photo.key %>
               <div class="card-body">
-
                 <h6 class="card-subtitle "><%= inflatable.category %></h6>
                 <p class="card-title"><%= inflatable.title %></p>
                 <div class="price-label text-center align-middle">
