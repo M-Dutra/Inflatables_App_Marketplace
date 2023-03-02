@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :inflatables do
     resources :bookings, only: %i[new create]
   end
-  resources :bookings, only: %i[show destroy]
+  resources :bookings, only: %i[show destroy update]
 
   get 'home', to: 'pages#home'
   get 'dashboard', to: 'pages#dashboard'
