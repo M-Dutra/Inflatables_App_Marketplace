@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  before_action :set_inflatable, only: %i[new]
+  before_action :set_inflatable, only: %i[new create]
 
   def new
     @booking = Booking.new
@@ -9,7 +9,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.inflatable = @inflatable
     @booking.user = current_user
-    total_days = (@booking.end_date - @booking.start_date).to_i
+    total_days = (@booking.end_date - @booking.start_date).to_i + 1
     @booking.total_price = @inflatable.price * total_days
     @booking.user = current_user
     if @booking.save

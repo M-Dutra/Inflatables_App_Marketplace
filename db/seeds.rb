@@ -9,11 +9,12 @@ require "open-uri"
 User.destroy_all
 puts 'Creating 10 fake user...'
 10.times do
+  name = Faker::Name.first_name
   user = User.new(
-    first_name: Faker::Name.first_name,
+    first_name: name,
     last_name: Faker::Name.last_name,
     password: "123456",
-    email: Faker::Internet.email
+    email: "#{name}@example.com"
   )
   user.save!
 end
@@ -326,3 +327,6 @@ inflatable = Inflatable.new(
 file = URI.open("https://res.cloudinary.com/dayeka7nl/image/upload/v1677768211/Inflatables/heart_balloon_qu2saw.png")
 inflatable.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
 inflatable.save!
+
+review.new
+review.inflatable = inflatable

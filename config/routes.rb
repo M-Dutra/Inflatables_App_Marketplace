@@ -13,5 +13,6 @@ Rails.application.routes.draw do
   resources :bookings, only: %i[show destroy]
   resources :reviews, only: [:destroy]
 
+  get 'home', to: 'pages#home'
   get 'dashboard', to: 'pages#dashboard'
 end
