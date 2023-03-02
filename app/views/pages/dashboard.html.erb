@@ -10,6 +10,7 @@
               <%= cl_image_tag(booking.inflatable.photo.key, class: "card-img-top inflatable-img") if booking.inflatable.photo.key %>
             </div>
           <div class="card-body">
+
             <h6 class="card-subtitle "><%= booking.inflatable.category %></h6>
             <p class="card-title"><%= booking.inflatable.title %></p>
             <p class="card-label">Timescale</p>
@@ -18,6 +19,7 @@
                   <h3 class="card-price">€ <%= booking.total_price %></h3>
             </div>
             <%# <%= booking.inflatable.photo.key %>
+
           </div>
         </div>
       </div>

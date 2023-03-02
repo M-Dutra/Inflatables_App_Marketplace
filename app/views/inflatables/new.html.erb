@@ -1,0 +1,12 @@
+<h1>Share your inflatable</h1>
+
+<div class="container">
+  <%= simple_form_for @inflatable do |f| %>
+    <%= f.input :title %>
+    <%= f.input :description %>
+    <%= f.input :category, collection: ["toys", "costumes", "slides", "balloons", "pools"]%>
+    <%= f.input :price %>
+    <%= f.input :photo, as: :file%>
+    <%= f.submit %>
+  <% end %>
+</div>

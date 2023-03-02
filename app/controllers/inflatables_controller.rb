@@ -21,8 +21,9 @@ class InflatablesController < ApplicationController
 
   def create
     @inflatable = Inflatable.new(inflatable_params)
+    @inflatable.user = current_user
     if @inflatable.save
-      redirect_to inflatables_path(@inflatable)
+      redirect_to inflatables_path
     else
       render :new, status: :unprocessable_entity
     end
