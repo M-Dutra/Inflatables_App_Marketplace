@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema[7.0].define(version: 2023_03_02_140100) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -66,6 +68,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_02_140100) do
     t.index ["user_id"], name: "index_inflatables_on_user_id"
   end
 
+  create_table "reviews", force: :cascade do |t|
+    t.text "content"
+    t.bigint "inflatable_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["inflatable_id"], name: "index_reviews_on_inflatable_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -85,4 +95,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_02_140100) do
   add_foreign_key "bookings", "inflatables"
   add_foreign_key "bookings", "users"
   add_foreign_key "inflatables", "users"
+  add_foreign_key "reviews", "inflatables"
 end

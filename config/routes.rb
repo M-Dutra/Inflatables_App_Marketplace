@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'reviews/new'
   devise_for :users
   root to: "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -7,8 +8,10 @@ Rails.application.routes.draw do
   # root "articles#index"
   resources :inflatables do
     resources :bookings, only: %i[new create]
+    resources :reviews, only: [:new, :create]
   end
   resources :bookings, only: %i[show destroy update]
+
 
   get 'home', to: 'pages#home'
   get 'dashboard', to: 'pages#dashboard'
