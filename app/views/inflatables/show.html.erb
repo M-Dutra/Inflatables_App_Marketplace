@@ -1,49 +1,50 @@
-<!-- Dates for the reservation -->
-<div >
-<%= simple_form_for [@inflatable, @booking], data: { controller: 'flatpickr' }  do |f| %>
-  <%= f.input :start_date, as: :string, input_html: { data: { flatpickr_target: "startTime" } } %>
-  <%= f.input :end_date, as: :string, input_html: { data: { flatpickr_target: "endTime" }, id: 'end_time' } %>
-  <%= f.submit 'Schedule your appointment' %>
-<% end %>
-</div>
-
-
-
 <!-- Page Content -->
-<div class="container">
-  <h1 class="my-4"><%= @inflatable.title.upcase %></h1>
-    <div class="row">
-      <div class="col-md-8">
-        <%= cl_image_tag(@inflatable.photo.key, width: 700, height: 900, crop: :fill, class:"img-fluid") if @inflatable.photo.key %>
-      </div>
-
-      <div class="col-md-4">
-        <h3 class="my-3"><%= @inflatable.title.capitalize %></h3>
-        <p><%= @inflatable.description %></p>
-        <h3 class="my-3">Project Details</h3>
-        <ul>
-          <li><%= @inflatable.title %></li>
-          <li><%= @inflatable.category %></li>
-          <li><%= @inflatable.description %></li>
-          <li><%= @inflatable.price %>€</li>
-        </ul>
+<section class="py-5">
+  <div class="container px-4 px-lg-5 my-5">
+      <div class="row gx-4 gx-lg-5 align-items-center">
+          <div class="col-md-6"><%= cl_image_tag(@inflatable.photo.key, width: 500, crop: :fill) if @inflatable.photo.key %></div>
+          <div class="col-md-6">
+              <div class="small mb-1"><%= @inflatable.category.upcase %></div>
+              <h1 class="display-5 fw-bolder"><%= @inflatable.title %></h1>
+              <div class="fs-5 mb-5">
+                <span><%= @inflatable.price %>€</span>
+              </div>
+              <p class="lead"><%= @inflatable.description %></p>
+              <div class="d-flex">
+              <!-- Dates for the reservation -->
+              <div >
+                <%= simple_form_for [@inflatable, @booking], data: { controller: 'flatpickr' }  do |f| %>
+                  <%= f.input :start_date, as: :string, input_html: { data: { flatpickr_target: "startTime" } } %>
+                  <%= f.input :end_date, as: :string, input_html: { data: { flatpickr_target: "endTime" }, id: 'end_time' } %>
+                  <%= f.submit :class => "btn btn-dark btn-lg btn-block" %>
+                <% end %>
+              </div>
+          </div>
       </div>
     </div>
-</div>
+  </div>
+</section>
+
 <!-- further recommendations-->
-<%# iterate over show action / @inflatables %>
-<div class="container">
-  <h3 class="my-4">You might be interested in:</h3>
-    <% @inflatables.each do |inflatable| %>
-      <div class="card">
-        <%= link_to inflatable_path do %>
-          <div class="card text-center text-white" style="background-color:#ffa82e00;">
-            <div class="card photo" class="card-img-top">
-              <%= cl_image_tag(@inflatable.photo.key, width: 700, height: 900, crop: :fill, class:"img-fluid") if @inflatable.photo.key %>
-              <%# <img class="img-interest" src="https://3.imimg.com/data3/CD/LM/MY-19285799/inflatable-jumper-500x500.jpg" alt=""> %>
+<section class="py-5 bg-light">
+  <div class="container px-4 px-lg-5 mt-5 fw-bolder"> <h1>You might also be interested in: </h1>
+      <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+        <% @inflatables.each do |inflatable| %>
+          <div class="card-group">
+            <div class="card h-100 card-style" style="width: 18rem;">
+              <%= link_to inflatable_path(inflatable) do %>
+              <%= cl_image_tag(inflatable.photo.key, class: "card-img-top inflatable") if inflatable.photo.key %>
+              <div class="card-body">
+                <h6 class="card-subtitle "><%= inflatable.category %></h6>
+                <p class="card-title"><%= inflatable.title %></p>
+                <div class="price-label text-center align-middle">
+                  <h3 class="card-price">€ <%= inflatable.price %></h3>
+                </div>
+              </div>
+            <% end %>
             </div>
           </div>
-        <% end %>
-      </div>
-  <% end %>
-</div>
+      <% end %>
+    </div>
+  </div>
+</section>

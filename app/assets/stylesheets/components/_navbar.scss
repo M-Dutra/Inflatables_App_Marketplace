@@ -13,6 +13,24 @@
 
 .navbar-brand {
   color: white;
+
+  &:hover {
+    color: #3050de;
+
+  }
+}
+
+.nav-link {
+  color: white;
+}
+
+.navbar-item {
+  color: white;
+
+  &:hover {
+    text-decoration: underline;
+
+  }
 }
 
 .container-fluid a li {
