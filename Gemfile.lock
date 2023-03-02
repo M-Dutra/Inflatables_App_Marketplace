@@ -96,7 +96,6 @@ GEM
     cloudinary (1.25.0)
       aws_cf_signer
       rest-client (>= 2.0.0)
-    commonjs (0.2.7)
     concurrent-ruby (1.2.2)
     crass (1.0.6)
     date (3.3.3)
@@ -120,8 +119,6 @@ GEM
     faker (3.1.1)
       i18n (>= 1.8.11, < 2)
     ffi (1.15.5)
-    font-awesome-less (4.7.0)
-      less (>= 2.4.0)
     font-awesome-sass (6.3.0)
       sassc (~> 2.0)
     globalid (1.1.0)
@@ -139,8 +136,6 @@ GEM
       activesupport (>= 5.0.0)
     jsbundling-rails (1.1.1)
       railties (>= 6.0.0)
-    less (2.6.0)
-      commonjs (~> 0.2.7)
     loofah (2.19.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -290,7 +285,6 @@ DEPENDENCIES
   devise
   dotenv-rails
   faker
-  font-awesome-less
   font-awesome-sass (~> 6.1)
   jbuilder
   jsbundling-rails
