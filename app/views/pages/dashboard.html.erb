@@ -1,22 +1,38 @@
 <h1>My Dashboard</h1>
 
-  <h1>My Bookings</h1>
-  <div class="row row-cols-1 row-cols-md-3 g-4">
+  <h2>My Bookings</h2>
+  <div class="row g-4">
       <% @bookings.each do |booking| %>
-      <div class="col">
-        <div class="card card-style" style="width: 18rem;">
-          <img src="https://source.unsplash.com/random/400×300/?ballon" class="card-img-top booking" alt="...">
+      <div class="col-12 col-sm-6 col-md-3">
+      <div class="card-group">
+        <div class="card h-100 card-style">
+            <div class="inflatable">
+              <%= cl_image_tag(booking.inflatable.photo.key, class: "card-img-top inflatable-img") if booking.inflatable.photo.key %>
+            </div>
           <div class="card-body">
-            <p class="card-text">Check-in: <%= booking.start_date %></p>
-            <p class="card-text">Check-out: <%= booking.end_date %></p>
-            <h3 class="card-title">Total Price: <%= booking.total_price %> €</h3>
+
+            <h6 class="card-subtitle "><%= booking.inflatable.category %></h6>
+            <p class="card-title"><%= booking.inflatable.title %></p>
+            <p class="card-label">Timescale</p>
+            <p class="card-date"><%= booking.start_date %> - <%= booking.end_date %></p>
+            <div class="price-label text-center align-middle">
+                  <h3 class="card-price">€ <%= booking.total_price %></h3>
+            </div>
+            <%# <%= booking.inflatable.photo.key %>
+
           </div>
         </div>
       </div>
-      <% end %>
+    </div>
+    <% end %>
   </div>
 
-  <h1>My inflatables</h1>
+  <div class="row">
+    <div class="d-flex justify-content-between mt-4">
+      <h2 class= "m-0">My inflatables</h2>
+      <%= link_to "Add offer", new_inflatable_path, class:"btn btn-primary" %>
+    </div>
+  </div>
   <div class="row row-cols-1 row-cols-md-3 g-4">
       <% @inflatables.each do |inflatable| %>
       <div class="col">
