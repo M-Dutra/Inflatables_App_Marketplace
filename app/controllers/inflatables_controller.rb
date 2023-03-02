@@ -11,7 +11,8 @@ class InflatablesController < ApplicationController
     # limit 4
     # active records query
     # exclude from search the one already shown
-    @inflatables = Inflatable.where(category: @inflatable.category).limit(4)
+    # @inflatables = Inflatable.where(category: @inflatable.category).limit(4).offset(1)
+    @inflatables = Inflatable.where(category: @inflatable.category).where.not(id: @inflatable.id).limit(4)
   end
 
   def new

@@ -1,45 +1,38 @@
-<!-- Dates for the reservation -->
-<div >
-<%= simple_form_for [@inflatable, @booking], data: { controller: 'flatpickr' }  do |f| %>
-  <%= f.input :start_date, as: :string, input_html: { data: { flatpickr_target: "startTime" } } %>
-  <%= f.input :end_date, as: :string, input_html: { data: { flatpickr_target: "endTime" }, id: 'end_time' } %>
-  <%= f.submit 'Schedule your appointment' %>
-<% end %>
-</div>
-
-
-
 <!-- Page Content -->
-<div class="container">
-  <h1 class="my-4"><%= @inflatable.title.upcase %></h1>
-    <div class="row">
-      <div class="col-md-6">
-        <%= cl_image_tag(@inflatable.photo.key, width: 500, crop: :fill, class: "card-img-top") if @inflatable.photo.key %>
-      </div>
-
-      <div class="col-md-6">
-        <h3 class="my-3"><%= @inflatable.title.capitalize %></h3>
-        <p><%= @inflatable.description %></p>
-        <h3 class="my-3">Project Details</h3>
-        <ul>
-        <li>Category: <%= @inflatable.category %></li>
-        <li>Price: <%= @inflatable.price %>€</li>
-        </ul>
+<section class="py-5">
+  <div class="container px-4 px-lg-5 my-5">
+      <div class="row gx-4 gx-lg-5 align-items-center">
+          <div class="col-md-6"><%= cl_image_tag(@inflatable.photo.key, width: 500, crop: :fill) if @inflatable.photo.key %></div>
+          <div class="col-md-6">
+              <div class="small mb-1"><%= @inflatable.category.upcase %></div>
+              <h1 class="display-5 fw-bolder"><%= @inflatable.title %></h1>
+              <div class="fs-5 mb-5">
+                <span><%= @inflatable.price %>€</span>
+              </div>
+              <p class="lead"><%= @inflatable.description %></p>
+              <div class="d-flex">
+              <!-- Dates for the reservation -->
+              <div >
+                <%= simple_form_for [@inflatable, @booking], data: { controller: 'flatpickr' }  do |f| %>
+                  <%= f.input :start_date, as: :string, input_html: { data: { flatpickr_target: "startTime" } } %>
+                  <%= f.input :end_date, as: :string, input_html: { data: { flatpickr_target: "endTime" }, id: 'end_time' } %>
+                  <%= f.submit :class => "btn btn-dark btn-lg btn-block" %>
+                <% end %>
+              </div>
+          </div>
       </div>
     </div>
-</div>
+  </div>
+</section>
+
 <!-- further recommendations-->
-<%# iterate over show action / @inflatables %>
-<div class="container">
-  <h1>You might also be interested in: </h1>
-  <div class="row row-cols-12 row-cols-md-4 g-4">
-      <% @inflatables.each do |inflatable| %>
-        <%# <div class="col"> %>
+<section class="py-5 bg-light">
+  <div class="container px-4 px-lg-5 mt-5 fw-bolder"> <h1>You might also be interested in: </h1>
+      <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+        <% @inflatables.each do |inflatable| %>
           <div class="card-group">
             <div class="card h-100 card-style" style="width: 18rem;">
-              <%# <div><i class="fa-regular fa-heart"></i></div> %>
               <%= link_to inflatable_path(inflatable) do %>
-              <%# <img src="https://source.unsplash.com/random/400×300/?ballon" class="card-img-top inflatable" alt="..."> %>
               <%= cl_image_tag(inflatable.photo.key, class: "card-img-top inflatable") if inflatable.photo.key %>
               <div class="card-body">
                 <h6 class="card-subtitle "><%= inflatable.category %></h6>
@@ -51,7 +44,7 @@
             <% end %>
             </div>
           </div>
-        <%# </div> %>
       <% end %>
+    </div>
   </div>
-</div>
+</section>

@@ -1,6 +1,13 @@
 .inflatable {
   height: 300px;
+  overflow: hidden;
+}
 
+.inflatable-img {
+  object-fit: cover;
+  object-position: center;
+  height: 100%;
+  width: 100%
 }
 
 .card-style {
@@ -14,6 +21,9 @@
 
   }
 
+}
+.card {
+  border: 1px #ffffff solid
 }
 
 .card-title {
@@ -35,7 +45,7 @@
 
 .card-price {
   font-size: 16px;
-  color: #a80332;
+  color: #3050de;
   text-decoration: none;
 
 }
