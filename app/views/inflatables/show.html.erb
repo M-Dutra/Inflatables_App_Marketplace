@@ -12,13 +12,13 @@
               <p class="lead"><%= @inflatable.description %></p>
               <div class="d-flex">
               <!-- Dates for the reservation -->
-              <div >
-                <%= simple_form_for [@inflatable, @booking], data: { controller: 'flatpickr' }  do |f| %>
-                  <%= f.input :start_date, as: :string, input_html: { data: { flatpickr_target: "startTime" } } %>
-                  <%= f.input :end_date, as: :string, input_html: { data: { flatpickr_target: "endTime" }, id: 'end_time' } %>
-                  <%= f.submit :class => "btn btn-dark btn-lg btn-block" %>
-                <% end %>
-              </div>
+              <%= simple_form_for [@inflatable, @booking], data: { controller: 'flatpickr' }, html: {class: "w-100"}  do |f| %>
+                <div class="d-flex w-100">
+                  <%= f.input :start_date, as: :string, input_html: { data: { flatpickr_target: "startTime" } }, wrapper_html: { class: "flex-grow-1" } %>
+                  <%= f.input :end_date, as: :string, input_html: { data: { flatpickr_target: "endTime" }, id: 'end_time' }, wrapper_html: { class: "flex-grow-1" } %>
+                </div>
+                  <%= f.submit :class => "btn btn-primary" %>
+              <% end %>
           </div>
       </div>
     </div>
@@ -26,7 +26,7 @@
 </section>
 
 <!-- further recommendations-->
-<section class="py-5 bg-light">
+<section class="py-5">
   <div class="container px-4 px-lg-5 mt-5 fw-bolder"> <h1>You might also be interested in: </h1>
       <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
         <% @inflatables.each do |inflatable| %>
