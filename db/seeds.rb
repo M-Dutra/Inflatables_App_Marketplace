@@ -11,16 +11,37 @@ Inflatable.destroy_all
 User.destroy_all
 
 puts 'Creating 10 fake user...'
-10.times do
-  name = Faker::Name.first_name
-  user = User.new(
-    first_name: name,
-    last_name: Faker::Name.last_name,
-    password: "123456",
-    email: "#{name}@example.com"
-  )
-  user.save!
-end
+# 10.times do
+#   name = Faker::Name.first_name
+#   user = User.new(
+#     first_name: name,
+#     last_name: Faker::Name.last_name,
+#     password: "123456",
+#     email: "#{name}@example.com"
+#   )
+#   user.save!
+# end
+
+User.create(
+  first_name: "Owner",
+  last_name: Faker::Name.last_name,
+  password: "123456",
+  email: "own@test.de"
+)
+
+User.create(
+  first_name: "Book",
+  last_name: Faker::Name.last_name,
+  password: "123456",
+  email: "book@test.de"
+)
+
+User.create(
+  first_name: "Store",
+  last_name: Faker::Name.last_name,
+  password: "123456",
+  email: "bla@test.de"
+)
 
 Inflatable.all.each do |inflatable|
   inflatable.photo.purge
@@ -34,8 +55,9 @@ inflatable = Inflatable.new(
   It's like a unicorn's dream come to life, except without the hooves and horn.",
   category: "Pools",
   price: Faker::Commerce.price,
-  user: User.all.sample
+  user: User.where(email: "own@test.de").first
 )
+
 file = URI.open("https://res.cloudinary.com/dayeka7nl/image/upload/v1677758188/Inflatables/unicorn_boat_bcri6t.jpg")
 inflatable.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
 inflatable.save!
@@ -100,7 +122,7 @@ inflatable = Inflatable.new(
   allowing the water-based fun to begin almost instantly.",
   category: "Pools",
   price: Faker::Commerce.price,
-  user: User.all.sample
+  user: User.where(email: "own@test.de").first
 )
 file = URI.open("https://res.cloudinary.com/dayeka7nl/image/upload/v1677764267/Inflatables/pool_n05m37.png")
 inflatable.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
@@ -113,7 +135,7 @@ inflatable = Inflatable.new(
   Another way to play, go have fun in the sun.",
   category: "Pools",
   price: Faker::Commerce.price,
-  user: User.all.sample
+  user: User.where(email: "own@test.de").first
 )
 file = URI.open("https://res.cloudinary.com/dayeka7nl/image/upload/v1677764127/Inflatables/tank_lkggum.png")
 inflatable.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
@@ -127,7 +149,7 @@ inflatable = Inflatable.new(
   Enjoy the luxurious massage function (138 massage jets in total) and the atmospheric ambience.",
   category: "Pools",
   price: Faker::Commerce.price,
-  user: User.all.sample
+  user: User.where(email: "own@test.de").first
 )
 file = URI.open("https://res.cloudinary.com/dayeka7nl/image/upload/v1677763473/Inflatables/md_pool_xzd48u.png")
 inflatable.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
@@ -142,7 +164,7 @@ inflatable = Inflatable.new(
   Just be sure to keep it away from any actual ducks, or they might get jealous of its inflated ego.",
   category: "Toys",
   price: Faker::Commerce.price,
-  user: User.all.sample
+  user: User.where(email: "own@test.de").first
 )
 file = URI.open("https://res.cloudinary.com/dayeka7nl/image/upload/v1677764651/Inflatables/duck_tyo7a1.png")
 inflatable.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
@@ -155,7 +177,7 @@ inflatable = Inflatable.new(
   So grab your friends, hop inside, and let the good times roll - literally!",
   category: "Toys",
   price: Faker::Commerce.price,
-  user: User.all.sample
+  user: User.where(email: "own@test.de").first
 )
 file = URI.open("https://res.cloudinary.com/dayeka7nl/image/upload/v1677762195/Inflatables/rollball_b0gcgc.png")
 inflatable.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
@@ -169,7 +191,7 @@ inflatable = Inflatable.new(
   Come on down and take a ride on the wild side - with the inflatable slide!",
   category: "Slides",
   price: Faker::Commerce.price,
-  user: User.all.sample
+  user: User.where(email: "own@test.de").first
 )
 file = URI.open("https://res.cloudinary.com/dayeka7nl/image/upload/v1677765698/Inflatables/slide_1_i49mhm.png")
 inflatable.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
@@ -180,7 +202,7 @@ inflatable = Inflatable.new(
   description: "Glow in the dark, that is all you need.",
   category: "Toys",
   price: Faker::Commerce.price,
-  user: User.all.sample
+  user: User.where(email: "own@test.de").first
 )
 file = URI.open("https://res.cloudinary.com/dayeka7nl/image/upload/v1677764127/Inflatables/kaiju_rejvvo.png")
 inflatable.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
@@ -194,7 +216,7 @@ inflatable = Inflatable.new(
   So beam me up, Scotty, and let's get ready to party - with the inflatable alien costume!",
   category: "Costumes",
   price: Faker::Commerce.price,
-  user: User.all.sample
+  user: User.where(email: "bla@test.de").first
 )
 file = URI.open("https://res.cloudinary.com/dayeka7nl/image/upload/v1677764656/Inflatables/alien_costume_iiwpsy.png")
 inflatable.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
@@ -209,7 +231,7 @@ inflatable = Inflatable.new(
   Put on your best Jurassic swagger and get ready to tear up the dance floor",
   category: "Costumes",
   price: Faker::Commerce.price,
-  user: User.all.sample
+  user: User.where(email: "bla@test.de").first
 )
 file = URI.open("https://res.cloudinary.com/dayeka7nl/image/upload/v1677764655/Inflatables/t-rex_costume_rt1kkm.png")
 inflatable.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
@@ -223,7 +245,7 @@ inflatable = Inflatable.new(
   put on your game face and get ready to wrestle with the best of them",
   category: "Costumes",
   price: Faker::Commerce.price,
-  user: User.all.sample
+  user: User.where(email: "bla@test.de").first
 )
 file = URI.open("https://res.cloudinary.com/dayeka7nl/image/upload/v1677762043/Inflatables/sumo_kxnrmj.png")
 inflatable.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
@@ -237,7 +259,7 @@ inflatable = Inflatable.new(
   slip into something comfortable and fruity, and get ready to split some sides.",
   category: "Costumes",
   price: Faker::Commerce.price,
-  user: User.all.sample
+  user: User.where(email: "bla@test.de").first
 )
 file = URI.open("https://res.cloudinary.com/dayeka7nl/image/upload/v1677764914/Inflatables/banana_iohcw2.png")
 inflatable.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
@@ -251,7 +273,7 @@ inflatable = Inflatable.new(
   So light up your life and let the good times roll - with the inflatable LED pig balloon!",
   category: "Balloons",
   price: Faker::Commerce.price,
-  user: User.all.sample
+  user: User.where(email: "bla@test.de").first
 )
 file = URI.open("https://res.cloudinary.com/dayeka7nl/image/upload/v1677762772/Inflatables/led_pig_balloon_uqru4i.png")
 inflatable.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
@@ -264,7 +286,7 @@ inflatable = Inflatable.new(
   unlike a real octopus, this one won't squirt ink all over your guests!",
   category: "Balloons",
   price: Faker::Commerce.price,
-  user: User.all.sample
+  user: User.where(email: "bla@test.de").first
 )
 file = URI.open("https://res.cloudinary.com/dayeka7nl/image/upload/v1677763480/Inflatables/tentacle_iul3dc.png")
 inflatable.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
@@ -277,7 +299,7 @@ inflatable = Inflatable.new(
   It's like a unicorn's dream come to life, except without the hooves and horn.",
   category: "Balloons",
   price: Faker::Commerce.price,
-  user: User.all.sample
+  user: User.where(email: "bla@test.de").first
 )
 file = URI.open("https://res.cloudinary.com/dayeka7nl/image/upload/v1677763775/Inflatables/rainbowllon_owq2eo.png")
 inflatable.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
@@ -290,7 +312,7 @@ inflatable = Inflatable.new(
   Also as Simba at the Lion King kids' birthday party, the decorative figure brings lots of party fun.",
   category: "Balloons",
   price: Faker::Commerce.price,
-  user: User.all.sample
+  user: User.where(email: "bla@test.de").first
 )
 file = URI.open("https://res.cloudinary.com/dayeka7nl/image/upload/v1677766597/Inflatables/simballoon_rfwohz.png")
 inflatable.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
@@ -304,7 +326,7 @@ inflatable = Inflatable.new(
   So come on, grab your pumpkin spice latte and get ready to pumpkin-jump like it's 1999!",
   category: "Toys",
   price: Faker::Commerce.price,
-  user: User.all.sample
+  user: User.where(email: "bla@test.de").first
 )
 file = URI.open("https://res.cloudinary.com/dayeka7nl/image/upload/v1677765698/Inflatables/pumpkin_jumping_pad_xjahie.png")
 inflatable.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
@@ -318,7 +340,7 @@ inflatable = Inflatable.new(
   whether you're a knight in shining armor or a fairy princess.",
   category: "Toys",
   price: Faker::Commerce.price,
-  user: User.all.sample
+  user: User.where(email: "bla@test.de").first
 )
 file = URI.open("https://res.cloudinary.com/dayeka7nl/image/upload/v1677765698/Inflatables/castle_cy24jt.png")
 inflatable.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
@@ -332,7 +354,7 @@ inflatable = Inflatable.new(
   As you zoom down the slide, you'll feel like you're SpongeBob himself, dodging jellyfish and riding waves.",
   category: "Slides",
   price: Faker::Commerce.price,
-  user: User.all.sample
+  user: User.where(email: "bla@test.de").first
 )
 file = URI.open("https://res.cloudinary.com/dayeka7nl/image/upload/v1677766969/Inflatables/slide_3_c0sf0z.png")
 inflatable.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
@@ -343,7 +365,7 @@ inflatable = Inflatable.new(
   description: "Just a regular slide",
   category: "Slides",
   price: Faker::Commerce.price,
-  user: User.all.sample
+  user: User.where(email: "bla@test.de").first
 )
 file = URI.open("https://res.cloudinary.com/dayeka7nl/image/upload/v1677766969/Inflatables/slide_2_gvwjde.png")
 inflatable.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
@@ -356,7 +378,7 @@ inflatable = Inflatable.new(
   as if he's ready to take flight at any moment. That's Freddy! Rent and enjoy!",
   category: "Balloons",
   price: Faker::Commerce.price,
-  user: User.all.sample
+  user: User.where(email: "bla@test.de").first
 )
 file = URI.open("https://res.cloudinary.com/dayeka7nl/image/upload/v1677767933/Inflatables/frog_balloon_sde7ot.png")
 inflatable.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
@@ -367,7 +389,7 @@ inflatable = Inflatable.new(
   description: "Happy Birthday!",
   category: "Balloons",
   price: Faker::Commerce.price,
-  user: User.all.sample
+  user: User.where(email: "bla@test.de").first
 )
 file = URI.open("https://res.cloudinary.com/dayeka7nl/image/upload/v1677768071/Inflatables/happy_birthday_p6lubm.png")
 inflatable.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
@@ -378,7 +400,7 @@ inflatable = Inflatable.new(
   description: "For loved ones",
   category: "Balloons",
   price: Faker::Commerce.price,
-  user: User.all.sample
+  user: User.where(email: "bla@test.de").first
 )
 file = URI.open("https://res.cloudinary.com/dayeka7nl/image/upload/v1677768211/Inflatables/heart_balloon_qu2saw.png")
 inflatable.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
