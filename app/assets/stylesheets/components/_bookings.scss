@@ -16,19 +16,42 @@
   }
 }
 
-  .booking-tag {
-    margin: 1px 4px;
-    padding: 2px 5px 0px 5px;
-    background-color: #bfbfbf;
-    color: rgb(0, 0, 0);
-    border-radius: 10px;
-    font-weight: 600;
-    font-size: 10px;
-    text-transform: uppercase;
-    position: absolute;
-    top: -375px;
-    left: 200px;
+.booking-tag {
 
+  padding: 2px 5px 0px 5px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 10px;
+  text-transform: uppercase;
+  position: absolute;
+  top: 0;
+  right: 0;
+
+}
+
+  .booking-tag-pending {
+    margin: 20px 20px;
+    padding-bottom: 1px;
+    background-color: #e9e0e0;
+    color: rgb(114, 114, 114);
+    border: 1px rgb(114, 114, 114) solid;
+  }
+
+  .booking-tag-accepted {
+    margin: 20px 20px;
+    padding-bottom: 1px;
+    background-color: #c4f0db;
+    border: 1px $success-green solid;
+    color: $success-green;
+  }
+
+
+  .booking-tag-rejected {
+    margin: 20px 20px;
+    padding-bottom: 1px;
+    background-color: #f3c8cc;
+    border: 1px $danger-red solid;
+    color: $danger-red;
   }
 
   .booking-tag-parent {
