@@ -23,3 +23,7 @@
 body {
   padding-top: 65px;
 }
+
+input.form-control:focus {
+  background-color: white;
+}
