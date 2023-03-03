@@ -6,7 +6,10 @@ require "open-uri"
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+Booking.destroy_all
+Inflatable.destroy_all
 User.destroy_all
+
 puts 'Creating 10 fake user...'
 10.times do
   name = Faker::Name.first_name
@@ -22,7 +25,7 @@ end
 Inflatable.all.each do |inflatable|
   inflatable.photo.purge
 end
-Inflatable.destroy_all
+# Inflatable.destroy_all
 
 inflatable = Inflatable.new(
   title: "Unicorn Boat",

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get 'reviews/new'
   devise_for :users
-  root to: "pages#home"
+  root to: "inflatables#index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   resources :reviews, only: [:destroy]
   resources :bookings, only: %i[show destroy update]
 
-  get 'home', to: 'pages#home'
+
+
+  get 'home', to: 'inflatables#index'
   get 'dashboard', to: 'pages#dashboard'
 end

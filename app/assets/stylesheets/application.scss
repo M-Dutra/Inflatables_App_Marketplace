@@ -19,3 +19,11 @@
 #white-nav-text > * {
   color: white !important;
 }
+
+body {
+  padding-top: 65px;
+}
+
+input.form-control:focus {
+  background-color: white;
+}
