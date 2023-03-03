@@ -1,13 +1,13 @@
 <!-- Page Content -->
-<section class="py-5">
+<section class="py-5 bg-white">
   <div class="container px-4 px-lg-5 my-5">
-      <div class="row gx-4 gx-lg-5 align-items-center">
+      <div class="row gx-4 gx-lg-5">
           <div class="col-md-6"><%= cl_image_tag(@inflatable.photo.key, width: 500, crop: :fill) if @inflatable.photo.key %></div>
           <div class="col-md-6">
               <div class="small mb-1"><%= @inflatable.category.upcase %></div>
               <h1 class="display-5 fw-bolder"><%= @inflatable.title %></h1>
               <div class="fs-5 mb-5">
-                <span><%= @inflatable.price %>€</span>
+                <span style="background-color: black; color: white; border-radius: 15px; padding: 3px 10px"><%= @inflatable.price %>€</span>
               </div>
               <p class="lead"><%= @inflatable.description %></p>
               <div class="d-flex">

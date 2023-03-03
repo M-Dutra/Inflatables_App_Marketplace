@@ -9,7 +9,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.inflatable = @inflatable
     @booking.user = current_user
-    total_days = (@booking.end_date - @booking.start_date).to_i
+    total_days = (@booking.end_date - @booking.start_date).to_i + 1
     @booking.total_price = @inflatable.price * total_days
     @booking.user = current_user
     if @booking.save
@@ -18,6 +18,17 @@ class BookingsController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
+
+  def update
+    @booking = Booking.find(params[:id])
+    if @booking.update(booking_params)
+      redirect_to dashboard_path
+    else
+      render :new, status: :unprocessable_entity
+      # render # where was the booking update form?
+    end
+  end
+
 
   # def show
   #   @booking = Booking.find(params[:id])
@@ -36,6 +47,6 @@ class BookingsController < ApplicationController
   end
 
   def booking_params
-    params.require(:booking).permit(:start_date, :end_date)
+    params.require(:booking).permit(:start_date, :end_date, :status)
   end
 end
