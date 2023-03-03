@@ -10,7 +10,9 @@ Rails.application.routes.draw do
     resources :bookings, only: %i[new create]
     resources :reviews, only: [:new, :create]
   end
+  resources :reviews, only: [:destroy]
   resources :bookings, only: %i[show destroy update]
+
 
 
   get 'home', to: 'inflatables#index'

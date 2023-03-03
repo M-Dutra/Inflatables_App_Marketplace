@@ -28,6 +28,72 @@ end
 # Inflatable.destroy_all
 
 inflatable = Inflatable.new(
+  title: "Unicorn Boat",
+  description: "With its vibrant colors and whimsical curves, this majestic balloon is all you need!
+  One moment it's deflated and sad, and the next it's pumped up and bursting with joy (literally).
+  It's like a unicorn's dream come to life, except without the hooves and horn.",
+  category: "Pools",
+  price: Faker::Commerce.price,
+  user: User.all.sample
+)
+file = URI.open("https://res.cloudinary.com/dayeka7nl/image/upload/v1677758188/Inflatables/unicorn_boat_bcri6t.jpg")
+inflatable.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
+inflatable.save!
+
+review = Review.new(
+  content: "I can't recommend this inflatable unicorn boat enough!
+  It's so much fun to use and always gets a lot of attention.
+  The design is absolutely adorable and it's the perfect size for relaxing on the water.
+  I love how easy it is to inflate and deflate, making it convenient to take with me anywhere.
+  Overall, a great purchase for anyone looking for a fun and unique water toy!"
+)
+review.inflatable = inflatable
+review.save!
+
+review = Review.new(
+  content: "I absolutely love my inflatable unicorn boat! It's the perfect size for a relaxing day on the water,
+  and the design is absolutely adorable. The material feels durable and high-quality,
+  and I appreciate how easy it is to inflate and deflate. Overall, I highly recommend this
+  product for anyone who loves unicorns and wants to add some fun to their water activities!"
+)
+review.inflatable = inflatable
+review.save!
+
+review = Review.new(
+  content: "I recently rented the inflatable unicorn boat and I am beyond happy with it!
+  It's a great size for lounging on the water and the design is simply adorable.
+  The material feels durable and sturdy, and I appreciate how easy it is to inflate and deflate.
+  Plus, it's perfect for taking photos and creating fun memories.
+  Overall, a fantastic purchase that I would highly recommend!"
+)
+review.inflatable = inflatable
+review.save!
+
+review = Review.new(
+  content: "The inflatable unicorn boat is an absolute blast! It's the perfect size for floating around and
+  relaxing on the water, and the unicorn design is just too cute. I love how easy it is to inflate
+  and deflate, and the material feels durable and high-quality. It's also lightweight and easy to
+  transport, making it perfect for beach trips or lake days. Overall, a great purchase that's sure
+  to bring some fun to your summer!"
+)
+review.inflatable = inflatable
+review.save!
+
+inflatable = Inflatable.new(
+  title: "Dream pool",
+  description: "The funny inflatable pool is a fantastic way to add some excitement and entertainment to your backyard
+  or outdoor space. This type of pool is typically designed with bright colors, playful patterns,
+  and fun shapes to create a lighthearted and whimsical atmosphere.
+  The pool is made from durable and sturdy materials that can withstand the rigors of regular use.",
+  category: "Pools",
+  price: Faker::Commerce.price,
+  user: User.all.sample
+)
+file = URI.open("https://res.cloudinary.com/dayeka7nl/image/upload/v1677837634/Inflatables/giant_pool_ldryyh.webp")
+inflatable.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
+inflatable.save!
+
+inflatable = Inflatable.new(
   title: "MDutra Inflatable Paddling/Swimming Pool",
   description: "Transform the back garden with these high-quality AquaTech Inflatable Garden Swimming Pools.
   Offering something for the whole family to enjoy, these premium paddling pools can be set up in just 10 minutes,
@@ -214,19 +280,6 @@ inflatable = Inflatable.new(
   user: User.all.sample
 )
 file = URI.open("https://res.cloudinary.com/dayeka7nl/image/upload/v1677763775/Inflatables/rainbowllon_owq2eo.png")
-inflatable.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
-inflatable.save!
-
-inflatable = Inflatable.new(
-  title: "Unicorn Boat",
-  description: "With its vibrant colors and whimsical curves, this majestic balloon is all you need!
-  One moment it's deflated and sad, and the next it's pumped up and bursting with joy (literally).
-  It's like a unicorn's dream come to life, except without the hooves and horn.",
-  category: "Pools",
-  price: Faker::Commerce.price,
-  user: User.all.sample
-)
-file = URI.open("https://res.cloudinary.com/dayeka7nl/image/upload/v1677758188/Inflatables/unicorn_boat_bcri6t.jpg")
 inflatable.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
 inflatable.save!
 

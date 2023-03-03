@@ -1,5 +1,10 @@
 <h1>New review</h1>
 <%= simple_form_for [@inflatable, @review] do |f| %>
+
   <%= f.input :content %>
-  <%= f.submit "Submit review", class: "btn btn-primary" %>
+  <%= f.submit "Submit review", class: "btn btn-dark btn-lg btn-block" %>
+  <%= link_to "Back",
+                inflatable_path(@inflatable),
+            :class => "btn btn-dark btn-lg btn-block"
+          %>
 <% end %>
