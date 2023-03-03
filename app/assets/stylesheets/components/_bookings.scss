@@ -26,7 +26,18 @@
   position: absolute;
   top: 0;
   right: 0;
+}
 
+.booking-tag-user {
+
+  padding: 2px 5px 0px 5px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 10px;
+  text-transform: uppercase;
+  position: absolute;
+  top: -300px;
+  right: 0;
 }
 
   .booking-tag-pending {
@@ -54,9 +65,7 @@
     color: $danger-red;
   }
 
-  .booking-tag-parent {
-    position: relative;
-  }
+
 
 
 .booking-info {
