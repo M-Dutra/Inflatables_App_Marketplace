@@ -24,6 +24,17 @@
     </div>
   </div>
 </section>
+<ul>
+  <% @inflatable.reviews.each do |review| %>
+    <li class="list-group-item">
+      <%= review.content %>
+      <%= link_to "Delete",
+        review_path(review),
+        data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+      %>
+    </li>
+  <% end %>
+</ul>
 
 <!-- further recommendations-->
 <section class="py-5 bg-light">

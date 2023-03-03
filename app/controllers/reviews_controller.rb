@@ -11,7 +11,7 @@ class ReviewsController < ApplicationController
     if @review.save
       redirect_to inflatable_path(@inflatable)
     else
-      render :new, status: :unprocessable_entity
+      render "inflatables/show", status: :unprocessable_entity
     end
   end
 
