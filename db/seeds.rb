@@ -280,15 +280,6 @@ file = URI.open("https://res.cloudinary.com/dayeka7nl/image/upload/v1677763775/I
 inflatable.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
 inflatable.save!
 
-review = Review.new
-review.inflatable = inflatable(
-  content: "Unfortunately, my experience with the rainbow balloon was disappointing.
-  It popped within minutes of inflating it, even though I handled it carefully.
-  The colors were also not as vibrant as I had hoped, and the balloon did not hold its shape very well.
-  Overall, I would not recommend this product."
-)
-review.save!
-
 inflatable = Inflatable.new(
   title: "Chernobyl Simba",
   description: "Those on safari naturally want to see the famous king of the savannah.

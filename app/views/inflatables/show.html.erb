@@ -24,20 +24,25 @@
     </div>
   </div>
 </section>
-<ul>
-  <% @inflatable.reviews.each do |review| %>
-    <li class="list-group-item">
-      <%= review.content %>
-      <%= link_to "Delete",
-        review_path(review),
-        data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-      %>
-    </li>
-  <% end %>
-</ul>
+
+<section class="py-5 bg-light" style="margin-top: 50px">
+  <div class="container px-4 px-lg-5 mt-5"> <h1>Check what other users have to say: </h1>
+      <% @inflatable.reviews.each do |review| %>
+        <div class="card mb-4">
+          <div class="card-body">
+          <p><%= review.content %></p>
+          </div>
+        </div>
+      <% end %>
+        <%= link_to "Write a review",
+              new_inflatable_review_path(@inflatable),
+            :class => "btn btn-dark btn-lg btn-block"
+          %>
+      </div>
+</section>
 
 <!-- further recommendations-->
-<section class="py-5 bg-light">
+<section class="py-5 bg-light" style="margin-top: 50px">
   <div class="container px-4 px-lg-5 mt-5 fw-bolder"> <h1>You might also be interested in: </h1>
       <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
         <% @inflatables.each do |inflatable| %>
