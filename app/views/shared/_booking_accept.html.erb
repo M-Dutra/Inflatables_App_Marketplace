@@ -1,0 +1,33 @@
+<h1>Acept or Reject Booking</h1>
+<div class="bookings">
+  <% @bookings_for_my_inflatables.each do |booking| %>
+    <div class="booking">
+      <div class='booking-left'>
+        <!-- if you're using cloudinary and activestorage -->
+        <%# <%= cl_image_tag booking.user.photo, class: 'avatar-bordered' %>
+        <div class="booking-info">
+          <div class="booking-info-title">
+            <%= booking.user.first_name %>
+          </div>
+          <div class="booking-info-details">
+           <%# <%= booking.start_time.strftime('%l:%M %p') - <%= booking.end_time.strftime('%l:%M %p') %>
+          </div>
+        </div>
+      </div>
+      <div class="booking-actions">
+        <% if booking.pending? %>
+          <%= simple_form_for booking do |f| %>
+            <%= f.input :status, as: :hidden, input_html: { value: 'Accepted'} %>
+            <%= f.submit 'Accept', class: 'btn btn-info' %>
+          <% end %>
+          <%= simple_form_for booking do |f| %>
+            <%= f.input :status, as: :hidden, input_html: { value: 'Rejected'} %>
+            <%= f.submit 'Reject', class: 'btn btn-light' %>
+          <% end %>
+        <% else %>
+          <p class='booking-tag'><%= booking.status %></p>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>

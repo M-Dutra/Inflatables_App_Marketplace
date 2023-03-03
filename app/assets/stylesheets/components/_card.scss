@@ -28,7 +28,7 @@
 
 .card-title {
   font-size: 16px;
-  color: #121212;
+  color: #000000;
   text-decoration: none;
 
 }
@@ -45,7 +45,7 @@
 
 .card-price {
   font-size: 16px;
-  color: #3050de;
+  color: #364aa6;
   text-decoration: none;
 
 }
@@ -64,7 +64,17 @@
   padding: 6px;
 }
 
-// .i {
-//   background-color: none;
+.card-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  color: #000000;
+  text-decoration: none;
+  font-weight: 700;
+  padding-top: 8px;
+}
 
-// }
+.card-date {
+  margin: none;
+  font-size: 16px;
+
+}
