@@ -1,6 +1,6 @@
 <h1>My Dashboard</h1>
 
-  <h2>My Bookings</h2>
+  <% if @my_bookings.count >= 0 %> <h2>My Bookings</h2> <% end %>
   <div class="row g-4">
       <% @my_bookings.each do |booking| %>
       <div class="col-12 col-sm-6 col-md-3">
@@ -14,7 +14,8 @@
             <p class="card-title"><%= booking.inflatable.title %></p>
             <p class="card-label">Timescale</p>
             <p class="card-date"><%= booking.start_date %> - <%= booking.end_date %></p>
-            <p class='booking-tag'><%= booking.status %></p>
+            <p class="booking-tag-user booking-tag-<%= booking.status.nil? ? "pending": booking.status.downcase %>"><%= booking.status.nil? ? "Pending": booking.status.downcase  %></p>
+
             <div class="price-label text-center align-middle">
                   <h3 class="card-price">€ <%= booking.total_price %></h3>
             </div>
@@ -26,7 +27,7 @@
   </div>
 
   <div class="row">
-    <div class="d-flex justify-content-between mt-4">
+    <div class="d-flex justify-content-between  mt-4 mb-4">
       <h2 class= "m-0">My inflatables</h2>
       <%= link_to "Add offer", new_inflatable_path, class:"btn btn-primary" %>
     </div>
@@ -42,6 +43,7 @@
             <div class="card-body">
               <h6 class="card-subtitle "><%= inflatable.category %></h6>
               <h2 class="card-title"><%= inflatable.title %></h2>
+
               <%# <p class="card-text"><%= inflatable.description</p> %>
               <div class="price-label text-center align-middle">
                   <h3 class="card-price">€ <%= inflatable.price %></h3>
@@ -73,28 +75,26 @@
               <div class="price-label text-center align-middle">
                   <h3 class="card-price">€ <%= booking.inflatable.price %></h3>
               </div>
-                <div class="d-flex gap-4">
-                  <% if booking.pending? %>
-                    <div>
-                      <%= simple_form_for booking do |f| %>
-                        <%= f.input :status, as: :hidden, input_html: { value: 'Accepted'} %>
-                        <%= f.submit 'Accept', class: 'btn btn-success mr-4' %>
-                      <% end %>
-                    </div>
-                    <div>
-                      <%= simple_form_for booking do |f| %>
-                        <%= f.input :status, as: :hidden, input_html: { value: 'Rejected'} %>
-                        <%= f.submit 'Reject', class: 'btn btn-light' %>
-                      <% end %>
-                    </div>
-                  <% else %>
-                    <div class="booking-tag-parent">
-                      <p class="booking-tag"><%= booking.status %></p>
-                    </div>
-                  <% end %>
-                </div>
               <%# <%= render "shared/booking_accept" %>
               <%# Do i need to pass any variable in this render? (as alex did in the lecture)%>
+            </div>
+            <div class="d-flex gap-2 booking-tag">
+              <% if booking.pending? %>
+                <div>
+                  <%= simple_form_for booking do |f| %>
+                    <%= f.input :status, as: :hidden, input_html: { value: 'Accepted'} %>
+                    <%= f.submit 'Accept', class: 'btn btn-success' %>
+                  <% end %>
+                </div>
+                <div class="me-3">
+                  <%= simple_form_for booking do |f| %>
+                    <%= f.input :status, as: :hidden, input_html: { value: 'Rejected'} %>
+                    <%= f.submit 'Reject', class: 'btn btn-light' %>
+                  <% end %>
+                </div>
+              <% else %>
+                <p class="booking-tag booking-tag-<%= booking.status.downcase %>"><%= booking.status %></p>
+              <% end %>
             </div>
           </div>
         </div>
